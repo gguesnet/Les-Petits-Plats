@@ -239,8 +239,22 @@ async function filterRecipe(inputSearchValue) {
     });
   }
 
-  render(result);
-  return result;
+  let finalArray = result;
+
+  if (inputSearchValue) {
+    result.forEach((recipe) => {
+      if (recipe.name.toLowerCase().includes(inputSearchValue.toLowerCase())) {
+        finalArray.push(recipe);
+      }
+    });
+  }
+
+  finalArray = Array.from(new Set(finalArray));
+
+  console.log(finalArray);
+
+  render(finalArray);
+  return finalArray;
 }
 
 // Fonction de récupération des données
