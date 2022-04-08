@@ -1,12 +1,19 @@
+// On sélectionne la partie du DOM où sont rendues les recettes
 const DOM = document.querySelector(".card-group");
 
+// Fonction de rendu des recettes
 async function render(filter) {
   DOM.innerHTML = "";
   let data;
   if (filter === undefined) {
-    data = await getData();
+    data = await filterRecipe();
   } else {
     data = filter;
+  }
+
+  if (data.length === 0) {
+    const error = `<h1>Aucune recette ne correspond à votre recherche</h1>`;
+    DOM.insertAdjacentHTML("beforeend", error);
   }
 
   data.forEach((element) => {
@@ -56,7 +63,7 @@ async function render(filter) {
   });
 }
 
-const filterArray = [];
+// Tableau des filtres
 const ingredientArray = [];
 const appareilArray = [];
 const ustensileArray = [];
@@ -84,6 +91,7 @@ function buildTag(e) {
   addTag(e.target);
 }
 
+// Fonction d'ajout de filtre
 function addTag(data) {
   let color;
   const ID = data.parentNode.parentNode.parentNode.id;
@@ -118,23 +126,28 @@ function addTag(data) {
   div.appendChild(img);
 
   filterRecipe();
+
   return taglist.appendChild(div);
 }
 
+// Fonction de suppression de filtre
 function removeTag(e) {
   if (e.target.parentNode.classList.contains("tag-blue")) {
     const index = ingredientArray.findIndex(
-      (element) => element === e.target.parentNode.childNodes[0].textContent
+      (element) =>
+        element === e.target.parentNode.childNodes[0].textContent.toLowerCase()
     );
     ingredientArray.splice(index, 1);
   } else if (e.target.parentNode.classList.contains("tag-green")) {
     const index = appareilArray.findIndex(
-      (element) => element === e.target.parentNode.childNodes[0].textContent
+      (element) =>
+        element === e.target.parentNode.childNodes[0].textContent.toLowerCase()
     );
     appareilArray.splice(index, 1);
   } else if (e.target.parentNode.classList.contains("tag-salmon")) {
     const index = ustensileArray.findIndex(
-      (element) => element === e.target.parentNode.childNodes[0].textContent
+      (element) =>
+        element === e.target.parentNode.childNodes[0].textContent.toLowerCase()
     );
     ustensileArray.splice(index, 1);
   }
@@ -144,9 +157,9 @@ function removeTag(e) {
   filterRecipe();
 }
 
-function renderTag() {
+// Fonction de rendu de filtre
+function renderTag(e) {
   const input = this.childNodes[1].childNodes[3];
-  input.focus();
   input.placeholder = `Rechercher un ${input.name.toLowerCase()}`;
   input.style.setProperty("--opacity", "0.5");
   this.style.width = "700px";
@@ -155,9 +168,11 @@ function renderTag() {
     "display",
     "grid"
   );
+  input.focus();
   filterAutocompletion(input);
 }
 
+// Fonction de gestion du focus des
 function looseFocus() {
   const input = this;
   const ingredient = this.parentNode.parentNode;
@@ -170,25 +185,22 @@ function looseFocus() {
     "display",
     "none"
   );
-  return;
 }
 
+// Fonction de la barre de recherche utilisée par un écouteur d'événement
 function searchBar(e) {
   filterRecipe(e.target.value);
 }
 
+// Fonction d'autocomplétion utilisée par un écouteur d'événement
 function searchTag(e) {
   filterAutocompletion(e.target);
 }
 
-async function filterRecipe(filter) {
+// Fonction de l'algorithme de triage
+async function filterRecipe(inputSearchValue) {
   const data = await getData();
   let result = data;
-  if (filter) {
-    result = data.filter((recipe) => {
-      return recipe.name.toLowerCase().includes(filter.toLowerCase());
-    });
-  }
 
   if (ingredientArray.length > 0) {
     result = result.filter((recipe) => {
@@ -217,29 +229,42 @@ async function filterRecipe(filter) {
     );
   }
 
-  return render(result);
+  if (inputSearchValue !== undefined && inputSearchValue.length < 3) {
+    return render(result);
+  }
+
+  if (inputSearchValue) {
+    result = result.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(inputSearchValue.toLowerCase());
+    });
+  }
+
+  render(result);
+  return result;
 }
 
+// Fonction de récupération des données
 async function getData() {
   const data = await fetch("recipes.json");
   return await data.json();
 }
 
-async function filterAutocompletion(filter) {
-  const data = await getData();
+// Fonction de gestion de l'autocomplétion
+async function filterAutocompletion(inputTag) {
+  const data = await filterRecipe();
   const tableau = [];
 
-  if (filter.id === "ingredient-input") {
+  if (inputTag.id === "ingredient-input") {
     tag[0].innerHTML = "";
     data.forEach((element) =>
       element.ingredients.forEach((ingredient) =>
         tableau.push(ingredient.ingredient.toLowerCase())
       )
     );
-  } else if (filter.id === "appareil-input") {
+  } else if (inputTag.id === "appareil-input") {
     tag[1].innerHTML = "";
     data.forEach((element) => tableau.push(element.appliance.toLowerCase()));
-  } else if (filter.id === "ustensile-input") {
+  } else if (inputTag.id === "ustensile-input") {
     tag[2].innerHTML = "";
     data.forEach((element) =>
       element.ustensils.forEach((ustensil) =>
@@ -249,21 +274,35 @@ async function filterAutocompletion(filter) {
   }
 
   let uniqueArray = Array.from(new Set(tableau));
-
-  if (filter.value !== undefined) {
+  if (ingredientArray.length > 0) {
+    uniqueArray = uniqueArray.filter(
+      (ingredient) => !ingredientArray.includes(ingredient)
+    );
+  }
+  if (ustensileArray.length > 0) {
+    uniqueArray = uniqueArray.filter(
+      (ustensil) => !ustensileArray.includes(ustensil)
+    );
+  }
+  if (appareilArray.length > 0) {
+    uniqueArray = uniqueArray.filter((appareil) => {
+      return !appareilArray.includes(appareil);
+    });
+  }
+  if (inputTag.value !== undefined) {
     uniqueArray = uniqueArray.filter((tag) =>
-      tag.toLowerCase().includes(filter.value.toLowerCase())
+      tag.toLowerCase().includes(inputTag.value.toLowerCase())
     );
   }
 
   uniqueArray.forEach((element) => {
     const li = document.createElement("li");
     li.textContent = element[0].toUpperCase() + element.slice(1);
-    if (filter.id === "ingredient-input") {
+    if (inputTag.id === "ingredient-input") {
       tag[0].appendChild(li);
-    } else if (filter.id === "appareil-input") {
+    } else if (inputTag.id === "appareil-input") {
       tag[1].appendChild(li);
-    } else if (filter.id === "ustensile-input") {
+    } else if (inputTag.id === "ustensile-input") {
       tag[2].appendChild(li);
     }
   });
@@ -271,4 +310,5 @@ async function filterAutocompletion(filter) {
   return uniqueArray;
 }
 
+// Initialisation du rendu
 render();

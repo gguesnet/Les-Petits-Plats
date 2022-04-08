@@ -255,7 +255,7 @@
     "time": 50,
     "description": "Étaler la pate dans les moules à tartelette. faire cuire la pate 30 minutes. découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. verser la pate sur les tartelettes. couper les fraises en 2 et les positionner sur ",
     "appliance": "four",
-    "ustensils": ["moule à tartelettes (6)", "casserolle"]
+    "ustensils": ["moule à tartelettes (6)", "casserole"]
   },
   {
     "id": 8,
@@ -295,7 +295,7 @@
     "time": 60,
     "description": "Hachez les noix grossièrement. faire fondre le chocolat avec le beurre. mélanger les oeuf et le sucre et mélanger au chocolat. ajouter la farine. mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. verser la préparation dans un moule de préférence rectangulaire. cuire 2o à 25 minutes à 180°. sortez du four et attendez quelques minutes pour démouler. servir avec une boule de glace pour plus de gourmandise.",
     "appliance": "four",
-    "ustensils": ["moule à gateaux", "casserolle"]
+    "ustensils": ["moule à gateaux", "casserole"]
   },
   {
     "id": 9,
@@ -429,7 +429,7 @@
       }
     ],
     "time": 40,
-    "description": "Éplucher les fruits et les couper en morceaux, les mettre dans une casserolle en ajoutant l'eau et le sucre vanillé. laisser cuire 15 minutes en remuant régulièrement.",
+    "description": "Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le sucre vanillé. laisser cuire 15 minutes en remuant régulièrement.",
     "appliance": "casserole",
     "ustensils": ["couteau", "économe"]
   },
@@ -744,7 +744,7 @@
     ],
     "time": 30,
     "description": "Cuisiner la viande hachée dans une poelle à frire. dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. ajouter du vin rouge. mélanger les oigons avec la viande hachée. faire cuire les pates le temps indiqué sur le paquet. ajouter le coulis de tomates à la viande hachée. une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. serivir.",
-    "appliance": "casserolle.",
+    "appliance": "casserole",
     "ustensils": ["cuillère en bois", "louche", "couteau"]
   },
   {
@@ -780,7 +780,7 @@
     "time": 30,
     "description": "Faire fondre le chocolat et le beurre au bain marie. dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. ajouter la farine ainsi que le mélange de beurre et chocolat fondu. beurrez le moule à gateaux. mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. c'est prêt. servir avec une boule de glace ou une crême dessert.",
     "appliance": "four",
-    "ustensils": ["moule à gateaux", "fouet", "casserolle"]
+    "ustensils": ["moule à gateaux", "fouet", "casserole"]
   },
   {
     "id": 23,
@@ -958,7 +958,7 @@
     ],
     "time": 15,
     "description": "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. ajouter les vermicelles. laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
-    "appliance": "casserolle",
+    "appliance": "casserole",
     "ustensils": ["couteau", "cuillère en bois"]
   },
   {
@@ -994,7 +994,7 @@
     "time": 80,
     "description": "Émincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. ajouter les pommes de terres coupées en morceaux. ajouter l'eau et laisser mijoter pour 45 minutes. chauffer l'oseille avec le beurre restant puis incorporer le tout. mixez. ajoutez la crème. bon appetit.",
     "appliance": "mixer",
-    "ustensils": ["casserolle", "couteau"]
+    "ustensils": ["casserole", "couteau"]
   },
   {
     "id": 29,
@@ -1050,7 +1050,7 @@
     "time": 60,
     "description": "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. passer au mixer. salez, poivrez. c'est prêt",
     "appliance": "mixer",
-    "ustensils": ["casserolle", "cuillère en bois"]
+    "ustensils": ["casserole", "cuillère en bois"]
   },
   {
     "id": 31,
@@ -1186,7 +1186,7 @@
       }
     ],
     "time": 25,
-    "description": "Éplucher les patates douces et coupez les en morceaux. les faire cuire durant 20 minute dans une casserolle d'eau bouillante. passer au mixer en ajoutant la crème et l'huile d'olive à son gout. salez, poivrez. pressez l'orange et ajouter le jus à l'ensemble. servir.",
+    "description": "Éplucher les patates douces et coupez les en morceaux. les faire cuire durant 20 minute dans une casserole d'eau bouillante. passer au mixer en ajoutant la crème et l'huile d'olive à son gout. salez, poivrez. pressez l'orange et ajouter le jus à l'ensemble. servir.",
     "appliance": "mixer",
     "ustensils": ["couteau", "économe", "cuillère en bois"]
   },
@@ -1419,7 +1419,7 @@
     ],
     "time": 20,
     "description": "Séparer les blancs d'oeufs. faire fondre le chocolat au bain marie. ajouter les jaunes et le sucre au chocolat hors du feu. battre les blancs en neige. ajouter les blancs au mélange de chocolat. mélangez délicatement avec une spatule. servir dans un plat ou dans des verres. mettre au frais",
-    "appliance": "casserolle",
+    "appliance": "casserole",
     "ustensils": ["fouet", "spatule", "verres"]
   },
   {
@@ -1517,7 +1517,7 @@
     ],
     "time": 15,
     "description": "Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. ajouter du sucre après la cuisson. bien mélanger. ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. mettre dans des verres",
-    "appliance": "casserolle",
+    "appliance": "casserole",
     "ustensils": ["cuillère en bois"]
   },
   {
@@ -1547,7 +1547,7 @@
     ],
     "time": 30,
     "description": "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
-    "appliance": "casserolle",
+    "appliance": "casserole",
     "ustensils": ["fouet", "saladier"]
   },
   {
